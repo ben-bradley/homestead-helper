@@ -1,19 +1,18 @@
 import { useLocalStorage } from "../utils/storage.js";
+import TextField from "@mui/material/TextField";
 
 const Form1 = () => {
   const [ name, setName ] = useLocalStorage("name", "");
 
   return (
-    <form>
-      <input
-        type="text"
+    <div>
+      <TextField
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="Full name"
-        aria-label="fullname"
+        label="Name"
+        variant="outlined"
       />
-      <input type="submit" value="Submit"></input>
-    </form>
+    </div>
   );
 };
 

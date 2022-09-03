@@ -1,28 +1,27 @@
 import { useLocalStorage } from "../utils/storage.js";
+import Switch from "@mui/material/Switch";
+import TextField from "@mui/material/TextField";
 
 const Form1 = () => {
   const [ name, setName ] = useLocalStorage("name", "");
   const [ checked, setChecked ] = useLocalStorage("checked", false);
 
   return (
-    <form>
-      <input
-        type="text"
+    <div>
+      <TextField
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="Full name"
-        aria-label="fullname"
+        label="Name"
+        variant="outlined"
+        color="secondary"
       />
-      <label>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => setChecked(e.target.checked)}
-        />{" "}
-        Not a robot?
-      </label>
-      <input type="submit" value="Submit"></input>
-    </form>
+      <Switch
+        checked={checked}
+        onChange={(e) => setChecked(e.target.checked)}
+        label="Not a robot?"
+        color="secondary"
+      />
+    </div>
   );
 };
 
