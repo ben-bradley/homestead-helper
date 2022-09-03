@@ -3,15 +3,15 @@ import Switch from "@mui/material/Switch";
 import TextField from "@mui/material/TextField";
 
 const Form1 = () => {
-  const [ name, setName ] = useLocalStorage("name", "");
+  const [ otherName, setOtherName ] = useLocalStorage("otherName", "");
   const [ checked, setChecked ] = useLocalStorage("checked", false);
 
   return (
     <div>
       <TextField
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        label="Name"
+        value={otherName}
+        onChange={(e) => setOtherName(e.target.value)}
+        label="Other Name"
         variant="outlined"
         color="secondary"
       />
