@@ -4,7 +4,11 @@
     "node": true,
     "jest": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "react-app/jest"
+  ],
   "parserOptions": {
     "ecmaVersion": 2017
   },
@@ -26,7 +30,6 @@
     "prefer-const": "error",
     "quotes": [ "error", "double" ],
     "semi-style": ["error", "last" ],
-    "space-before-blocks": "error",
-    "space-before-function-paren": [ "error", { "asyncArrow": "always" } ]
+    "space-before-blocks": "error"
   }
 }
