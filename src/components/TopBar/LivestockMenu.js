@@ -4,7 +4,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 
-export default function LivestockMenu() {
+export default function LivestockMenu(props) {
+  const { config } = props;
   const [ anchorEl, setAnchorEl ] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => { setAnchorEl(event.currentTarget); };
@@ -13,7 +14,7 @@ export default function LivestockMenu() {
   return (
     <div>
       <Button
-        color="inherit"
+        color="secondary"
         id="livestock-button"
         aria-controls={open ? "livestock-menu" : undefined}
         aria-haspopup="true"
@@ -29,16 +30,20 @@ export default function LivestockMenu() {
         onClose={handleClose}
         MenuListProps={{ "aria-labelledby": "livestock-button" }}
       >
-        <Link color="inherit" to="/livestock/chicken" style={{ textDecoration: "none" }}>
-          <MenuItem onClick={handleClose}>
-            Chicken
-          </MenuItem>
-        </Link>
-        <Link color="inherit" to="/livestock/rabbits" style={{ textDecoration: "none" }}>
-          <MenuItem onClick={handleClose}>
-            Rabbits
-          </MenuItem>
-        </Link>
+        { config.show.chicken &&
+          <Link color="secondary" to="/livestock/chicken" style={{ textDecoration: "none" }}>
+            <MenuItem onClick={handleClose}>
+              Chicken
+            </MenuItem>
+          </Link>
+        }
+        { config.show.rabbits &&
+          <Link color="secondary" to="/livestock/rabbits" style={{ textDecoration: "none" }}>
+            <MenuItem onClick={handleClose}>
+              Rabbits
+            </MenuItem>
+          </Link>
+        }
       </Menu>
     </div>
   );

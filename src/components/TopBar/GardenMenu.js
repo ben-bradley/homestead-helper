@@ -12,7 +12,7 @@ export default function GardenMenu() {
   return (
     <div>
       <Button
-        color="inherit"
+        color="secondary"
         id="garden-button"
         aria-controls={open ? "garden-menu" : undefined}
         aria-haspopup="true"
@@ -22,6 +22,7 @@ export default function GardenMenu() {
         Garden
       </Button>
       <Menu
+        color="secondary"
         id="garden-menu"
         anchorEl={anchorEl}
         open={open}

@@ -6,8 +6,11 @@ import Typography from "@mui/material/Typography";
 
 import LivestockMenu from "./LivestockMenu.js";
 import GardenMenu from "./GardenMenu.js";
+import ConfigMenu from "./ConfigMenu.js";
 
-export default function TopBar() {
+export default function TopBar(props) {
+  const { config } = props;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -15,8 +18,9 @@ export default function TopBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Homestead Helper
           </Typography>
-          <LivestockMenu />
-          <GardenMenu />
+          <LivestockMenu config={config} />
+          <GardenMenu config={config} />
+          <ConfigMenu />
         </Toolbar>
       </AppBar>
     </Box>
