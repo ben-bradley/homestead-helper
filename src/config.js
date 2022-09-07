@@ -4,6 +4,10 @@ const config = {
       rabbits: true,
       chicken: true,
       goats: true
+    },
+    garden: {
+      compost: true,
+      harvest: true
     }
   }
 };

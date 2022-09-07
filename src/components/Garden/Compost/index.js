@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-export default function Chicken() {
+export default function Compost() {
   return (
     <Grid
       container
@@ -11,7 +11,7 @@ export default function Chicken() {
       direction="column"
     >
       <Grid item>
-        <Typography variant="h3">Chicken!</Typography>
+        <Typography variant="h3">Compost!</Typography>
       </Grid>
     </Grid>
   );

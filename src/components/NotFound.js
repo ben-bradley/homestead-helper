@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-export default function Chicken() {
+export default function NotFound() {
   return (
     <Grid
       container
@@ -9,9 +9,10 @@ export default function Chicken() {
       align="center"
       justify="center"
       direction="column"
+      style={{ marginTop: "10em" }}
     >
       <Grid item>
-        <Typography variant="h3">Chicken!</Typography>
+        <Typography variant="h3">Not found!</Typography>
       </Grid>
     </Grid>
   );

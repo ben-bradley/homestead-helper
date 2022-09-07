@@ -1,26 +1,32 @@
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
-
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-
 import Switch from "@mui/material/Switch";
 
-const LIVESTOCK = [ "rabbits", "chicken", "goats" ];
+const capitalize = { textTransform: "capitalize" };
 
 export default function Config(props) {
   const { config, setConfig } = props;
-  const updateShowLivestock = (update) => {
+
+  const PAGES = [
+    {
+      category: "livestock",
+      pages: [ "rabbits", "chicken", "goats" ]
+    },
+    {
+      category: "garden",
+      pages: [ "compost", "harvest" ]
+    }
+  ];
+
+  const updateShow = (category, update) => {
     setConfig((_config) => ({
       ..._config,
       show: {
         ..._config.show,
-        livestock: {
-          ..._config.show.livestock,
+        [category]: {
+          ..._config.show[category],
           ...update
         }
       }
@@ -28,30 +34,36 @@ export default function Config(props) {
   }
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="HH Config">
-        <TableHead>
-          <TableRow>
-            <TableCell align="right">Livestock</TableCell>
-            <TableCell>Show</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {LIVESTOCK.map((animal, i) =>
-            <TableRow key={i}>
-              <TableCell align="right" style={{ textTransform: "capitalize" }}>{animal}</TableCell>
-              <TableCell>
-                <Switch
-                  checked={config.show.livestock[animal]}
-                  onChange={(e) => updateShowLivestock({ [animal]: e.target.checked })}
-                  label="Show chickens?"
-                  color="secondary"
-                />
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Box sx={{ flexGrow: 1 }}>
+      { PAGES.map(({ category, pages }) =>
+        <Grid container key={category} spacing={2}>
+          <Grid item xs={12}>
+            <Typography align="center" variant="h2" style={{ ...capitalize }}>
+              {category}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            { pages.map((page) =>
+              <Grid container key={page}>
+                <Grid item xs={6} style={{ ...capitalize }} align="right">
+                  <Typography variant="h5">{page}</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Switch
+                    checked={config.show[category][page]}
+                    onChange={(e) => updateShow(category, { [page]: e.target.checked })}
+                    label={`Show ${page}?`}
+                    color="secondary"
+                  />
+                </Grid>
+              </Grid>
+            )}
+          </Grid>
+          <Grid item xs={12}>
+            <Divider />
+          </Grid>
+        </Grid>
+      )}
+    </Box>
   );
 }

@@ -5,18 +5,15 @@ import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
+import SettingsIcon from "@mui/icons-material/Settings";
+import { Link } from "react-router-dom";
 
-import ConfigMenu from "./ConfigMenu.js";
 import DrawerMenu from "./DrawerMenu.js";
 
 export default function TopBar(props) {
   const { config } = props;
-
   const [ open, setOpen ] = React.useState(false);
-
-  const toggleDrawer = () => {
-    setOpen((_open) => !_open);
-  }
+  const toggleDrawer = () => setOpen((_open) => !_open);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -28,7 +25,11 @@ export default function TopBar(props) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Homestead Helper
           </Typography>
-          <ConfigMenu />
+          <IconButton aria-label="config">
+            <Link color="secondary" to="/config" style={{ textDecoration: "none" }}>
+              <SettingsIcon color="secondary" />
+            </Link>
+          </IconButton>
         </Toolbar>
       </AppBar>
       <DrawerMenu open={open} toggleDrawer={toggleDrawer} config={config} />

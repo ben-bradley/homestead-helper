@@ -13,17 +13,18 @@ export default function DrawerMenu(props) {
 
   const livestock = Object.keys(config.show.livestock)
     .filter((key) => config.show.livestock[key]);
-  // const garden = Object.keys(config.show).filter((key) => config.show[key]);
+  const garden = Object.keys(config.show.garden)
+    .filter((key) => config.show.garden[key]);
 
   return (
     <Drawer anchor='left' open={open} onClose={toggleDrawer}>
       <Box sx={{ width: 250 }} role="presentation">
         <List>
           <ListSubheader>Livestock</ListSubheader>
-          {livestock.map((animal, i) =>
+          { livestock.map((item, i) =>
             <ListItem key={i} style={{ paddingTop: 0, paddingBottom: 0 }}>
-              <ListItemButton component={Link} to={`/livestock/${animal}`} onClick={toggleDrawer}>
-                <ListItemText primary={animal} style={{ textTransform: "capitalize" }} />
+              <ListItemButton component={Link} to={`/livestock/${item}`} onClick={toggleDrawer}>
+                <ListItemText primary={item} style={{ textTransform: "capitalize" }} />
               </ListItemButton>
             </ListItem>
           )}
@@ -31,16 +32,13 @@ export default function DrawerMenu(props) {
         <Divider />
         <List>
           <ListSubheader>Garden</ListSubheader>
-          <ListItem style={{ paddingTop: 0, paddingBottom: 0 }}>
-            <ListItemButton component={Link} to="/garden/compost" onClick={toggleDrawer}>
-              <ListItemText primary="Compost" style={{ textTransform: "capitalize" }} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem style={{ paddingTop: 0, paddingBottom: 0 }}>
-            <ListItemButton component={Link} to="/garden/harvest" onClick={toggleDrawer}>
-              <ListItemText primary="Harvest" style={{ textTransform: "capitalize" }} />
-            </ListItemButton>
-          </ListItem>
+          { garden.map((item, i) =>
+            <ListItem key={i} style={{ paddingTop: 0, paddingBottom: 0 }}>
+              <ListItemButton component={Link} to={`/garden/${item}`} onClick={toggleDrawer}>
+                <ListItemText primary={item} style={{ textTransform: "capitalize" }} />
+              </ListItemButton>
+            </ListItem>
+          )}
         </List>
       </Box>
     </Drawer>
