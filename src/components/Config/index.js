@@ -1,62 +1,57 @@
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
+
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+
 import Switch from "@mui/material/Switch";
+
+const LIVESTOCK = [ "rabbits", "chicken", "goats" ];
 
 export default function Config(props) {
   const { config, setConfig } = props;
-  const updateShowConfig = (update) => {
+  const updateShowLivestock = (update) => {
     setConfig((_config) => ({
       ..._config,
       show: {
         ..._config.show,
-        ...update
+        livestock: {
+          ..._config.show.livestock,
+          ...update
+        }
       }
     }));
   }
 
   return (
-    <div>
-      <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>
-      Config
-      </Typography>
-      <Typography variant="h2" component="div" sx={{ flexGrow: 1 }}>
-      Livestock
-      </Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          Chicken
-        </Grid>
-        <Grid item xs={4}>
-          <Switch
-            checked={config.show.chicken}
-            onChange={(e) => updateShowConfig({ chicken: e.target.checked })}
-            label="Show chickens?"
-            color="secondary"
-          />
-        </Grid>
-        <Grid item xs={8}>
-          Rabbits
-        </Grid>
-        <Grid item xs={4}>
-          <Switch
-            checked={config.show.rabbits}
-            onChange={(e) => updateShowConfig({ rabbits: e.target.checked })}
-            label="Show rabbits?"
-            color="secondary"
-          />
-        </Grid>
-        <Grid item xs={8}>
-          Goats
-        </Grid>
-        <Grid item xs={4}>
-          <Switch
-            checked={config.show.goats}
-            onChange={(e) => updateShowConfig({ goats: e.target.checked })}
-            label="Show goats?"
-            color="secondary"
-          />
-        </Grid>
-      </Grid>
-    </div>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="HH Config">
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Livestock</TableCell>
+            <TableCell>Show</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {LIVESTOCK.map((animal, i) =>
+            <TableRow key={i}>
+              <TableCell align="right" style={{ textTransform: "capitalize" }}>{animal}</TableCell>
+              <TableCell>
+                <Switch
+                  checked={config.show.livestock[animal]}
+                  onChange={(e) => updateShowLivestock({ [animal]: e.target.checked })}
+                  label="Show chickens?"
+                  color="secondary"
+                />
+              </TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }

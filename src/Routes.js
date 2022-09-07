@@ -12,10 +12,10 @@ export default function HHRoutes(props) {
 
   return (
     <Routes>
-      { config.show.chicken &&
+      { config.show.livestock.chicken &&
         <Route exact path="/livestock/chicken" element={<Chicken />}></Route>
       }
-      { config.show.rabbits &&
+      { config.show.livestock.rabbits &&
         <Route exact path="/livestock/rabbits" element={<Rabbits />}></Route>
       }
       <Route exact path="/config" element={<Config config={config} setConfig={setConfig} />} />
