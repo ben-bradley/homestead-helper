@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/homestead-helper/static/css/main.8dc5f4ac.css",
-    "main.js": "/homestead-helper/static/js/main.782a49bd.js",
+    "main.js": "/homestead-helper/static/js/main.042df595.js",
     "static/js/787.cf4ca8ac.chunk.js": "/homestead-helper/static/js/787.cf4ca8ac.chunk.js",
     "index.html": "/homestead-helper/index.html",
     "main.8dc5f4ac.css.map": "/homestead-helper/static/css/main.8dc5f4ac.css.map",
-    "main.782a49bd.js.map": "/homestead-helper/static/js/main.782a49bd.js.map",
+    "main.042df595.js.map": "/homestead-helper/static/js/main.042df595.js.map",
     "787.cf4ca8ac.chunk.js.map": "/homestead-helper/static/js/787.cf4ca8ac.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8dc5f4ac.css",
-    "static/js/main.782a49bd.js"
+    "static/js/main.042df595.js"
   ]
 }
