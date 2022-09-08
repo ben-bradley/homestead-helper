@@ -7,16 +7,7 @@ import { crud, useLocalStorage } from "../../../utils/storage.js";
 import { PileType, TempType } from "./types.js";
 import Pile from "./Pile.js";
 
-const staticTemps = [
-  { id: 1, pileId: 1, date: new Date("2022-09-08 00:00:00"), scale: "F", value: 100 },
-  { id: 2, pileId: 1, date: new Date("2022-09-07 00:00:00"), scale: "F", value: 95 },
-  { id: 3, pileId: 1, date: new Date("2022-09-06 00:00:00"), scale: "F", value: 93 },
-  { id: 4, pileId: 1, date: new Date("2022-09-05 00:00:00"), scale: "F", value: 90 },
-  { id: 5, pileId: 1, date: new Date("2022-09-01 00:00:00"), scale: "F", value: 90 }
-];
-const staticPiles = [
-  { id: 1, name: "Pile #1" }
-];
+import { staticPiles, staticTemps } from "./sampleData.js";
 
 export default function Compost(props) {
   const crudPiles = crud(useLocalStorage("compost.piles", staticPiles), PileType);
