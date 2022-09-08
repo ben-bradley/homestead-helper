@@ -6,7 +6,6 @@ import theme from "./theme.js";
 import defaultConfig from "./config.js";
 import TopBar from "./components/TopBar/index.js";
 import Routes from "./Routes.js";
-import "./App.css";
 
 function App() {
   const [ config, setConfig ] = useLocalStorage("config", defaultConfig);
