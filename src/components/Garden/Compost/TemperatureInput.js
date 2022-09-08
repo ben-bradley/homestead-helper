@@ -28,6 +28,7 @@ export default function TemperatureInput(props) {
         </LocalizationProvider>
         <TextField
           label="Temp"
+          type="number"
           id="standard-start-adornment"
           InputProps={{
             endAdornment: <InputAdornment position="end">{temperatureScale}</InputAdornment>
