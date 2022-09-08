@@ -3,6 +3,9 @@ import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Switch from "@mui/material/Switch";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
 
 const capitalize = { textTransform: "capitalize" };
 
@@ -30,6 +33,14 @@ export default function Config(props) {
           ...update
         }
       }
+    }));
+  };
+
+  const updateTemperatureScale = (value) => {
+    console.log("scale:", value);
+    setConfig((_config) => ({
+      ..._config,
+      temperatureScale: value
     }));
   }
 
@@ -62,8 +73,30 @@ export default function Config(props) {
           <Grid item xs={12}>
             <Divider />
           </Grid>
+          <Grid item xs={12}>
+            <Typography align="center" variant="h2" style={{ ...capitalize }}>
+              Misc
+            </Typography>
+          </Grid>
         </Grid>
       )}
+      <Grid container>
+        <Grid item xs={6} style={{ ...capitalize }} align="right">
+          <Typography variant="h5">Temperature Scale</Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <FormControl fullWidth>
+            <Select
+              value={config.temperatureScale}
+              label="Temperature Scale"
+              onChange={(e) => updateTemperatureScale(e.target.value)}
+            >
+              <MenuItem value="F">Farenheit</MenuItem>
+              <MenuItem value="C">Celcius</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

@@ -18,7 +18,7 @@ const staticPiles = [
   { id: 1, name: "Pile #1" }
 ];
 
-export default function Compost() {
+export default function Compost(props) {
   const crudPiles = crud(useLocalStorage("compost.piles", staticPiles), PileType);
   const crudTemps = crud(useLocalStorage("compost.temps", staticTemps), TempType);
 
@@ -32,6 +32,7 @@ export default function Compost() {
             pile={pile}
             crudPiles={crudPiles}
             crudTemps={crudTemps}
+            config={props.config}
           />
         )}
         <Button>Add new pile</Button>

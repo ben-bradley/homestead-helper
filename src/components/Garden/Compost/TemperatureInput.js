@@ -11,7 +11,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 export default function TemperatureInput(props) {
-  const { pileId, createTemperature } = props;
+  const { pileId, createTemperature, temperatureScale } = props;
   const [ date, setDate ] = React.useState(new Date());
   const [ temperature, setTemperature ] = React.useState("");
 
@@ -29,9 +29,8 @@ export default function TemperatureInput(props) {
         <TextField
           label="Temp"
           id="standard-start-adornment"
-
           InputProps={{
-            endAdornment: <InputAdornment position="end">F</InputAdornment>
+            endAdornment: <InputAdornment position="end">{temperatureScale}</InputAdornment>
           }}
           variant="standard"
           value={temperature}
@@ -45,7 +44,7 @@ export default function TemperatureInput(props) {
               date,
               pileId,
               value: temperature,
-              scale: "F"
+              scale: temperatureScale
             };
 
             createTemperature(temp);

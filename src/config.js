@@ -9,7 +9,8 @@ const config = {
       compost: true,
       harvest: true
     }
-  }
+  },
+  temperatureScale: "F"
 };
 
 export default config;

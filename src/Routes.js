@@ -20,16 +20,16 @@ export default function HHRoutes(props) {
       <Route exact path="/" element={<Home />}></Route>
       <Route exact path="/homestead-helper/" element={<Home />}></Route>
       { show.livestock.chicken &&
-        <Route exact path="/livestock/chicken" element={<Chicken />}></Route>
+        <Route exact path="/livestock/chicken" element={<Chicken config={config} />}></Route>
       }
       { show.livestock.rabbits &&
-        <Route exact path="/livestock/rabbits" element={<Rabbits />}></Route>
+        <Route exact path="/livestock/rabbits" element={<Rabbits config={config} />}></Route>
       }
       { show.garden.compost &&
-        <Route exact path="/garden/compost" element={<Compost />}></Route>
+        <Route exact path="/garden/compost" element={<Compost config={config} />}></Route>
       }
       { show.garden.harvest &&
-        <Route exact path="/garden/harvest" element={<Harvest />}></Route>
+        <Route exact path="/garden/harvest" element={<Harvest config={config} />}></Route>
       }
       <Route exact path="/config" element={<Config config={config} setConfig={setConfig} />} />
       <Route exact path="*" element={<NotFound />} />
