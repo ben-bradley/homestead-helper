@@ -5,15 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
-const padZero = (value) => (value < 10) ? `0${value}` : `${value}`;
-
-const formatDate = (date) => {
-  const year = date.getFullYear();
-  const month = padZero(date.getMonth() + 1);
-  const day = padZero(date.getDate());
-
-  return `${year}-${month}-${day}`;
-}
+import { formatDate } from "../../utils.js";
 
 export default function TemperatureTable(props) {
   const { temps } = props;
@@ -29,7 +21,7 @@ export default function TemperatureTable(props) {
         </TableHead>
         <TableBody>
           { temps.map((temp, i) =>
-            <TableRow>
+            <TableRow key={i}>
               <TableCell>{formatDate(temp.date)}</TableCell>
               <TableCell>{temp.value}{temp.scale}</TableCell>
             </TableRow>

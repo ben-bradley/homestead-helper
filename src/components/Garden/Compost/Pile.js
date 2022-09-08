@@ -1,29 +1,24 @@
 import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
+import TemperatureInput from "./TemperatureInput.js";
 import TemperatureTable from "./TemperatureTable.js";
-
-const padZero = (value) => (value < 10) ? `0${value}` : `${value}`;
-
-const formatDate = (date) => {
-  const year = date.getFullYear();
-  const month = padZero(date.getMonth() + 1);
-  const day = padZero(date.getDate());
-
-  return `${year}-${month}-${day}`;
-}
+import { formatDate } from "../../utils.js";
 
 export default function Pile(props) {
-  const { pile } = props;
+  const { pile, saveTemperature } = props;
   const [ temp ] = pile.temps;
 
+  console.log("temp:", temp);
+
   return (
-    <Accordion>
+    <Accordion sx={{ maxHeight: "75vh", overflow: "scroll" }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography sx={{ width: "33%", flexShrink: 0 }}>
+        <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>
           {pile.name}
         </Typography>
         <Typography sx={{ color: "text.secondary" }}>
@@ -31,7 +26,11 @@ export default function Pile(props) {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <TemperatureTable temps={pile.temps} />
+        <Stack spacing={2}>
+          <TemperatureInput pileId={pile.id} saveTemperature={saveTemperature} />
+          <Typography variant="h6">Log</Typography>
+          <TemperatureTable temps={pile.temps} />
+        </Stack>
       </AccordionDetails>
     </Accordion>
   );
