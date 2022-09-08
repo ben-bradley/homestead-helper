@@ -18,7 +18,7 @@ export default function HHRoutes(props) {
   return (
     <Routes>
       <Route exact path="/" element={<Home />}></Route>
-      <Route exact path="/homestead-helper" element={<Home />}></Route>
+      <Route exact path="/homestead-helper/" element={<Home />}></Route>
       { show.livestock.chicken &&
         <Route exact path="/livestock/chicken" element={<Chicken />}></Route>
       }

@@ -23,7 +23,7 @@ export default function TopBar(props) {
             <MenuIcon color="secondary" />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/homestead-helper" style={{ textDecoration: "none", color: "white" }}>
+            <Link to="/homestead-helper/" style={{ textDecoration: "none", color: "white" }}>
               Homestead Helper
             </Link>
           </Typography>
