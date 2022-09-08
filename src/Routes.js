@@ -3,6 +3,7 @@ import {
   Route
 } from "react-router-dom";
 
+import Home from "./components/Home.js"
 import Chicken from "./components/Livestock/Chicken/index.js"
 import Rabbits from "./components/Livestock/Rabbits/index.js"
 import Compost from "./components/Garden/Compost/index.js"
@@ -16,6 +17,8 @@ export default function HHRoutes(props) {
 
   return (
     <Routes>
+      <Route exact path="/" element={<Home />}></Route>
+      <Route exact path="/homestead-helper" element={<Home />}></Route>
       { show.livestock.chicken &&
         <Route exact path="/livestock/chicken" element={<Chicken />}></Route>
       }
