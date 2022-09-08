@@ -11,13 +11,6 @@ const formatDate = (date) => {
   return `${year}-${month}-${day}`;
 }
 
-const crud = () => ({
-  create: () => {},
-  read: () => {},
-  update: () => {},
-  delete: () => {}
-});
-
 export {
   formatDate
 }

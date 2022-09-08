@@ -11,13 +11,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 export default function TemperatureInput(props) {
-  const { pileId, saveTemperature } = props;
+  const { pileId, createTemperature } = props;
   const [ date, setDate ] = React.useState(new Date());
   const [ temperature, setTemperature ] = React.useState("");
 
   return (
     <Container maxWidth="sm">
-      <Stack direction="row" spacing={2} align="center">
+      <Stack spacing={2} align="center">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label="Date"
@@ -27,9 +27,9 @@ export default function TemperatureInput(props) {
           />
         </LocalizationProvider>
         <TextField
-          label="Temperature"
+          label="Temp"
           id="standard-start-adornment"
-          sx={{ m: 1, width: "25ch" }}
+
           InputProps={{
             endAdornment: <InputAdornment position="end">F</InputAdornment>
           }}
@@ -43,11 +43,12 @@ export default function TemperatureInput(props) {
           onClick={() => {
             const temp = {
               date,
+              pileId,
               value: temperature,
               scale: "F"
             };
 
-            saveTemperature(pileId, temp);
+            createTemperature(temp);
             setTemperature("");
           }}
         >
