@@ -13,25 +13,45 @@ import NotFound from "./components/NotFound.js"
 
 export default function HHRoutes(props) {
   const { config, setConfig } = props;
-  const { show } = config;
+  const { show, root } = config;
 
   return (
     <Routes>
-      <Route exact path="/" element={<Home />}></Route>
-      <Route exact path="/homestead-helper/" element={<Home />}></Route>
+      <Route exact path={`/${root}`} element={<Home />} />
+      <Route exact path={`/${root}/homestead-helper/`} element={<Home />} />
       { show.livestock.chicken &&
-        <Route exact path="/livestock/chicken" element={<Chicken config={config} />}></Route>
+        <Route
+          exact
+          path={`/${root}/livestock/chicken`}
+          element={<Chicken config={config} />}
+        />
       }
       { show.livestock.rabbits &&
-        <Route exact path="/livestock/rabbits" element={<Rabbits config={config} />}></Route>
+        <Route
+          exact
+          path={`/${root}/livestock/rabbits`}
+          element={<Rabbits config={config} />}
+        />
       }
       { show.garden.compost &&
-        <Route exact path="/garden/compost" element={<Compost config={config} />}></Route>
+        <Route
+          exact
+          path={`/${root}/garden/compost`}
+          element={<Compost config={config} />}
+        />
       }
       { show.garden.harvest &&
-        <Route exact path="/garden/harvest" element={<Harvest config={config} />}></Route>
+        <Route
+          exact
+          path={`/${root}/garden/harvest`}
+          element={<Harvest config={config} />}
+        />
       }
-      <Route exact path="/config" element={<Config config={config} setConfig={setConfig} />} />
+      <Route
+        exact
+        path={`/${root}/config`}
+        element={<Config config={config} setConfig={setConfig} />}
+      />
       <Route exact path="*" element={<NotFound />} />
     </Routes>
   );

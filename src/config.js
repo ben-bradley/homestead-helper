@@ -1,4 +1,7 @@
+import pkg from "../package.json";
+
 const config = {
+  root: pkg.homepage.split("/").pop(),
   show: {
     livestock: {
       rabbits: true,
@@ -12,5 +15,7 @@ const config = {
   },
   temperatureScale: "F"
 };
+
+console.log("config:", config);
 
 export default config;

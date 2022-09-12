@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 export default function DrawerMenu(props) {
   const { open, toggleDrawer, config } = props;
+  const { root } = config;
 
   const livestock = Object.keys(config.show.livestock)
     .filter((key) => config.show.livestock[key]);
@@ -23,7 +24,11 @@ export default function DrawerMenu(props) {
           <ListSubheader>Livestock</ListSubheader>
           { livestock.map((item, i) =>
             <ListItem key={i} style={{ paddingTop: 0, paddingBottom: 0 }}>
-              <ListItemButton component={Link} to={`/livestock/${item}`} onClick={toggleDrawer}>
+              <ListItemButton
+                component={Link}
+                to={`/${root}/livestock/${item}`}
+                onClick={toggleDrawer}
+              >
                 <ListItemText primary={item} style={{ textTransform: "capitalize" }} />
               </ListItemButton>
             </ListItem>
@@ -34,7 +39,11 @@ export default function DrawerMenu(props) {
           <ListSubheader>Garden</ListSubheader>
           { garden.map((item, i) =>
             <ListItem key={i} style={{ paddingTop: 0, paddingBottom: 0 }}>
-              <ListItemButton component={Link} to={`/garden/${item}`} onClick={toggleDrawer}>
+              <ListItemButton
+                component={Link}
+                to={`/${root}/garden/${item}`}
+                onClick={toggleDrawer}
+              >
                 <ListItemText primary={item} style={{ textTransform: "capitalize" }} />
               </ListItemButton>
             </ListItem>
